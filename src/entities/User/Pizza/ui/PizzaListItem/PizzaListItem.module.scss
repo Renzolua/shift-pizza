@@ -1,0 +1,11 @@
+.pizza_description {
+	display: -webkit-box;
+	overflow: hidden;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3; 
+}
+
+.select_button_wrapper, .select_button {
+	width: 100%;
+	height: 56px;
+}
