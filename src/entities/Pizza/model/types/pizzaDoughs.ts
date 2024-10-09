@@ -1,0 +1,1 @@
+export type PizzaDoughs = "THIN" | "THICK"

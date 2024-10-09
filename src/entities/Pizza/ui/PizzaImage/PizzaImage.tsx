@@ -1,6 +1,6 @@
 import { memo } from "react";
-import { classNames } from "../../../../../shared/lib/classNames";
-import { AppImage } from "../../../../../shared/ui/AppImage/AppImage";
+import { classNames } from "../../../../shared/lib/classNames";
+import { AppImage } from "../../../../shared/ui/AppImage/AppImage";
 
 import cls from './PizzaImage.module.scss'
 

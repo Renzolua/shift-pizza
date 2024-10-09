@@ -1,6 +1,6 @@
 import { memo, useState } from "react";
 import { PizzaListItem } from "../PizzaListItem/PizzaListItem";
-import { Grid } from "../../../../../shared/ui/Stack/Grid/Grid";
+import { Grid } from "../../../../shared/ui/Stack/Grid/Grid";
 import { PizzaCardModal } from "../PizzaCardModal/PizzaCardModal";
 
 interface PizzaListProps {

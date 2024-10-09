@@ -1,7 +1,7 @@
 import { memo } from "react";
-import { AppImage } from "../../../../../../shared/ui/AppImage/AppImage";
-import { Flex } from "../../../../../../shared/ui/Stack/Flex/Flex";
-import { Typography } from "../../../../../../shared/ui/Typography";
+import { AppImage } from "../../../../../shared/ui/AppImage/AppImage";
+import { Flex } from "../../../../../shared/ui/Stack/Flex/Flex";
+import { Typography } from "../../../../../shared/ui/Typography";
 
 interface PizzaToppingsListItemProps {
   toppingItem: any;

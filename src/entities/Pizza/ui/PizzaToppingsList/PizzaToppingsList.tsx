@@ -1,8 +1,8 @@
 import { memo } from "react";
-import { Grid } from "../../../../../shared/ui/Stack/Grid/Grid";
+import { Grid } from "../../../../shared/ui/Stack/Grid/Grid";
 import { PizzaToppingsListItem } from "./PizzaToppingsListItem/PizzaToppingsListItem";
 
-import { classNames } from "../../../../../shared/lib/classNames";
+import { classNames } from "../../../../shared/lib/classNames";
 import cls from "./PizzaToppingsList.module.scss";
 
 interface PizzaToppingsListProps {

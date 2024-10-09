@@ -1,11 +1,11 @@
 import { memo } from "react";
-import { Flex } from "../../../../../shared/ui/Stack/Flex/Flex";
+import { Flex } from "../../../../shared/ui/Stack/Flex/Flex";
 import { PizzaImage } from "../PizzaImage/PizzaImage";
 
 import cls from "./PizzaListItem.module.scss";
-import { classNames } from "../../../../../shared/lib/classNames";
-import { Typography } from "../../../../../shared/ui/Typography";
-import { Button } from "../../../../../shared/ui/Button";
+import { classNames } from "../../../../shared/lib/classNames";
+import { Typography } from "../../../../shared/ui/Typography";
+import { Button } from "../../../../shared/ui/Button";
 
 interface PizzaListItemProps {
   className?: string;
