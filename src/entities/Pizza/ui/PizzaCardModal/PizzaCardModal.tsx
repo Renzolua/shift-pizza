@@ -47,6 +47,7 @@ export const PizzaCardModal = memo((props: PizzaCardModalProps) => {
       setPizzaToppings((prev) => [...prev, selectedTopping]);
     }
   };
+
   return (
     <Modal
       isOpen={isOpen}
@@ -95,6 +96,7 @@ export const PizzaCardModal = memo((props: PizzaCardModalProps) => {
             pizzaSize={pizzaSize}
             pizzaDough={pizzaDough}
             pizzaToppings={pizzaToppings}
+            onConfirm={()=>onClose()}
           />
         </Flex>
       </Flex>

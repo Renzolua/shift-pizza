@@ -2,19 +2,25 @@ import { useEffect } from "react";
 import { Button } from "../../../../shared/ui/Button";
 import { useCookies } from "react-cookie";
 import { useCartStore } from "../../../Cart/model/store/useCartStore";
-import { PizzaDough, PizzaInCatalog, PizzaSize, PizzaTopping } from "../../model/types/pizza";
+import {
+  PizzaDough,
+  PizzaInCatalog,
+  PizzaSize,
+  PizzaTopping,
+} from "../../model/types/pizza";
 // import Cookies from "suniversal-cookie";
 
 interface AddToCardButtonProps {
   pizza: PizzaInCatalog;
   pizzaSize: PizzaSize;
   pizzaDough: PizzaDough;
-  pizzaToppings: PizzaTopping[]
+  pizzaToppings: PizzaTopping[];
+  onConfirm: () => void;
 }
 
 export const AddToCardButton = (props: AddToCardButtonProps) => {
   const { pizzas, setPizzas } = useCartStore();
-  const { pizza, pizzaSize, pizzaDough, pizzaToppings } = props;
+  const { pizza, pizzaSize, pizzaDough, pizzaToppings, onConfirm } = props;
 
   return (
     <>
@@ -31,9 +37,10 @@ export const AddToCardButton = (props: AddToCardButtonProps) => {
               doughs: pizzaDough,
               name: pizza.name,
               size: pizzaSize,
-              toppings: pizzaToppings
+              toppings: pizzaToppings,
             },
           ]);
+          onConfirm();
         }}
       >
         Добавить в корзину
