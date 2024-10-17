@@ -4,21 +4,29 @@ import { PizzaToppingsListItem } from "./PizzaToppingsListItem/PizzaToppingsList
 
 import { classNames } from "../../../../shared/lib/classNames";
 import cls from "./PizzaToppingsList.module.scss";
+import { PizzaTopping } from "../../model/types/pizza";
 
 interface PizzaToppingsListProps {
-  toppingsList: any[];
+  toppingsList: PizzaTopping[];
+  onChangePizzaToppings: (topping: PizzaTopping) => void;
 }
 
 export const PizzaToppingsList = memo((props: PizzaToppingsListProps) => {
-  const { toppingsList } = props;
+  const { toppingsList, onChangePizzaToppings } = props;
   return (
     <Grid
       columns={3}
       gap={12}
       className={classNames(cls.PizzaListItem, {}, [])}
     >
-      {toppingsList.map((toppingItem: any) => {
-        return <PizzaToppingsListItem toppingItem={toppingItem}/>;
+      {toppingsList.map((toppingItem) => {
+        return (
+          <PizzaToppingsListItem
+            key={toppingItem.name}
+            toppingItem={toppingItem}
+            onClick={() => onChangePizzaToppings(toppingItem)}
+          />
+        );
       })}
     </Grid>
   );

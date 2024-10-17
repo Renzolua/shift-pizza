@@ -12,6 +12,10 @@ const queryClient = new QueryClient();
 // import '@/app/styles/index.scss';
 import "./styles/index.scss";
 import { App } from "./app/App";
+import { createRouter, RouterProvider } from "@tanstack/react-router";
+import { routeTree } from "./routeTree.gen";
+
+const router = createRouter({ routeTree });
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

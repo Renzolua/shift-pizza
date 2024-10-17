@@ -20,16 +20,17 @@ export const PizzaSizeButtons = memo((props: PizzaSizeButtonsProps) => {
       direction="row"
       className={classNames(cls.PizzaCardModal, {}, [className])}
     >
-      {pizzaSizes?.map((pizzaType: any) => {
+      {pizzaSizes?.map((pizzaType) => {
         return (
           <Button
+          key={pizzaType.name}
             variant={
               pizzaSize.name === pizzaType.name
                 ? "primary_text"
                 : "default_text"
             }
             size="m"
-            onClick={() => onChangePizzaSize(pizzaType.name)}
+            onClick={() => onChangePizzaSize(pizzaType)}
           >
             {pizzaType.name}
           </Button>

@@ -14,6 +14,7 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
+import { Route as CartIndexImport } from './routes/cart/index'
 
 // Create Virtual Routes
 
@@ -37,6 +38,11 @@ const AuthIndexLazyRoute = AuthIndexLazyImport.update({
   path: '/auth/',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/auth/index.lazy').then((d) => d.Route))
+
+const CartIndexRoute = CartIndexImport.update({
+  path: '/cart/',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const TodoIndexvalueLazyRoute = TodoIndexvalueLazyImport.update({
   path: '/todo/$indexvalue',
@@ -63,6 +69,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TodoIndexvalueLazyImport
       parentRoute: typeof rootRoute
     }
+    '/cart/': {
+      id: '/cart/'
+      path: '/cart'
+      fullPath: '/cart'
+      preLoaderRoute: typeof CartIndexImport
+      parentRoute: typeof rootRoute
+    }
     '/auth/': {
       id: '/auth/'
       path: '/auth'
@@ -85,6 +98,7 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/todo/$indexvalue': typeof TodoIndexvalueLazyRoute
+  '/cart': typeof CartIndexRoute
   '/auth': typeof AuthIndexLazyRoute
   '/todo': typeof TodoIndexLazyRoute
 }
@@ -92,6 +106,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/todo/$indexvalue': typeof TodoIndexvalueLazyRoute
+  '/cart': typeof CartIndexRoute
   '/auth': typeof AuthIndexLazyRoute
   '/todo': typeof TodoIndexLazyRoute
 }
@@ -100,22 +115,24 @@ export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/todo/$indexvalue': typeof TodoIndexvalueLazyRoute
+  '/cart/': typeof CartIndexRoute
   '/auth/': typeof AuthIndexLazyRoute
   '/todo/': typeof TodoIndexLazyRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/todo/$indexvalue' | '/auth' | '/todo'
+  fullPaths: '/' | '/todo/$indexvalue' | '/cart' | '/auth' | '/todo'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/todo/$indexvalue' | '/auth' | '/todo'
-  id: '__root__' | '/' | '/todo/$indexvalue' | '/auth/' | '/todo/'
+  to: '/' | '/todo/$indexvalue' | '/cart' | '/auth' | '/todo'
+  id: '__root__' | '/' | '/todo/$indexvalue' | '/cart/' | '/auth/' | '/todo/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   TodoIndexvalueLazyRoute: typeof TodoIndexvalueLazyRoute
+  CartIndexRoute: typeof CartIndexRoute
   AuthIndexLazyRoute: typeof AuthIndexLazyRoute
   TodoIndexLazyRoute: typeof TodoIndexLazyRoute
 }
@@ -123,6 +140,7 @@ export interface RootRouteChildren {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   TodoIndexvalueLazyRoute: TodoIndexvalueLazyRoute,
+  CartIndexRoute: CartIndexRoute,
   AuthIndexLazyRoute: AuthIndexLazyRoute,
   TodoIndexLazyRoute: TodoIndexLazyRoute,
 }
@@ -141,6 +159,7 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/todo/$indexvalue",
+        "/cart/",
         "/auth/",
         "/todo/"
       ]
@@ -150,6 +169,9 @@ export const routeTree = rootRoute
     },
     "/todo/$indexvalue": {
       "filePath": "todo/$indexvalue.lazy.tsx"
+    },
+    "/cart/": {
+      "filePath": "cart/index.tsx"
     },
     "/auth/": {
       "filePath": "auth/index.lazy.tsx"
